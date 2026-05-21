@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\LenientX\\\\Desktop\\\\岚图\\\\project\\\\SpdToPwr\" -Recurse -File | Where-Object { $_.Extension -in '.py', '.parquet', '.pkl', '.csv', '.json' } | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize)",
+      "Bash(findstr /i \"training_results\")"
+    ]
+  }
+}
