@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>项目总结报告.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="岚图-voyah-电动汽车三电数据挖掘与能耗预测--项目总结报告">岚图 VOYAH 电动汽车三电数据挖掘与能耗预测 — 项目总结报告</h1>
+<blockquote>
+<p>基于岚图 H56D 车型三辆试验车（VIN: 6993 / 7752 / 8123）连续 40 天（2026-03-01 ~ 2026-04-09）秒级行车传感器数据，完成数据清洗、统计分析、可视化、充电/行程深度分析，并构建 <strong>LSTM / BiLSTM / BiLSTM+Attention 三种深度学习模型</strong>实现能耗预测对比。</p>
+</blockquote>
+<hr>
+<ul>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">项目文件结构</a></li>
+<li><a href="#%E5%BF%85%E5%81%9A%E4%BD%9C%E4%B8%9A">必做作业</a>
+<ul>
+<li><a href="#1-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE">1. 读取数据</a></li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97">2. 数据清洗</a></li>
+<li><a href="#3-%E5%B7%AE%E5%80%BC%E8%A1%A5%E9%BD%90">3. 差值补齐</a></li>
+<li><a href="#4-%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90">4. 统计分析</a></li>
+<li><a href="#5-%E5%8F%AF%E8%A7%86%E5%8C%96">5. 可视化</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%89%E5%81%9A%E4%BD%9C%E4%B8%9A">选做作业</a>
+<ul>
+<li><a href="#6-%E5%85%85%E7%94%B5%E5%88%86%E6%9E%90">6. 充电分析</a></li>
+<li><a href="#7-%E8%A1%8C%E7%A8%8B%E5%88%86%E6%9E%90">7. 行程分析</a></li>
+<li><a href="#8-%E8%83%BD%E8%80%97%E9%A2%84%E6%B5%8B%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E5%AF%B9%E6%AF%94">8. 能耗预测（三种网络对比）</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre class="hljs"><code><div>project/
+├── 项目总结报告.md                                 ← 本文档
+└── SpdToPwr/
+    ├── comparison_loss_curves.png
+    └── comparison_metrics.png
+    ├── data_split_tool.py                          # 数据读取、清洗、插值、分片
+    ├── data_utils.py                               # 滑动窗口、行程切分、标准化、DataLoader
+    ├── visualize_results.py                        # EDA可视化 + 训练结果可视化
+    │
+    ├── configs/                                    # 超参数配置
+    │   ├── Bilstm_attention.py                     # BiLSTM+Attention 配置
+    │   ├── lstm_config.py                          # LSTM 配置
+    │   └── bilstm_config.py                        # BiLSTM 配置
+    │
+    ├── nn/                                         # 模型定义
+    │   ├── model.py                                # 基础模型
+    │   ├── model_lstm.py                           # LSTMPredictor
+    │   ├── model_bilstm.py                         # BiLSTMPredictor
+    │   └── model_improved.py                       # EVPowerImprovedModel + BahdanauAttention
+    │
+    ├── train/                                      # 训练脚本
+    │   ├── train_lstm.py                           # LSTM 训练
+    │   ├── train_bilstm.py                         # BiLSTM 训练
+    │   ├── train_bilstm_a.py                       # BiLSTM+Attention 训练
+    │   └── train_utils.py                          # EarlyStopping
+    │
+    ├──training_results/
+    │   ├── lstm/                                   # LSTM 5 张图
+    │   ├── bilstm/                                 # BiLSTM 5 张图
+    │   ├── bilstm_attention/                       # BiLSTM+Attention 5 张图
+    │   └── comparison/                             # 多模型对比 2 张图    
+    ├── test/                                       # 测试脚本
+    │   ├── test.py                                 # BiLSTM+Attention 测试
+    │   ├── test_lstm.py                            # LSTM 测试
+    │   └── test_bilstm.py                          # BiLSTM 测试
+    │
+    ├── models/                                     # 训练好的模型权重
+    │   ├── best_model_lstm_power_prediction_6993.pth
+    │   ├── best_model_bilstm_power_prediction_6993.pth
+    │   └── best_model_power_prediction_6993.pth
+    │
+    ├── test_results/                               # BiLSTM+Attention 测试结果
+    │   ├── predict_FULL_power_prediction_6993.png
+    │   └── predict_ZOOM_power_prediction_6993.png
+    ├── test_results_lstm/                          # LSTM 测试结果
+    │   ├── predict_FULL_power_prediction_6993.png
+    │   └── predict_ZOOM_power_prediction_6993.png
+    ├── test_results_bilstm/                        # BiLSTM 测试结果
+    │   ├── predict_FULL_power_prediction_6993.png
+    │   └── predict_ZOOM_power_prediction_6993.png
+    │
+    ├── processedData/                              # CSV 分片 (vin_6993_chunk_0~35.csv)
+    │
+    └── analysis/                                   # 数据分析模块
+        ├── eda_report_generator.py                 # EDA 报告生成器
+        ├── Analysis_Charge.py                      # 充电分析（7 维度）
+        ├── Analysis_generator.py                   # 行程分析（8 维度）
+        ├── viz_utils.py                            # 可视化工具（5 维度）
+        ├── analysis_results/                       # 全局分析图（4 张）
+        ├── visualizations/                         # VIN 单车可视化（20 张）
+        │   ├── 6993/                               # VIN 6993 × 5 张
+        │   ├── 7752/                               # VIN 7752 × 5 张
+        │   └── 8123/                               # VIN 8123 × 5 张
+        └── EDA_Reports/                            # EDA 分析报告
+            ├── 6993/                               # EDA报告 + 充电报告 + 7张图
+            ├── 7752/                               # 同上
+            └── 8123/                               # 同上
+</div></code></pre>
+<h1 id="必做作业">必做作业</h1>
+<h2 id="1-读取数据">1. 读取数据</h2>
+<h3 id="11-数据来源">1.1 数据来源</h3>
+<p>原始数据为单张 CSV 文件 <code>作业数据部分 - 副本.csv</code>（553 MB），包含三辆 H56D 试验车连续 40 天的全量行车传感器秒级数据，涵盖 40+ 个字段。</p>
+<h3 id="12-数据规模">1.2 数据规模</h3>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>数据行数</th>
+<th>时间跨度</th>
+<th>采样间隔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>357,156</td>
+<td>2026-03-01 00:17:41 → 2026-04-09 23:45:02</td>
+<td>1.0 秒</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>1,084,154</td>
+<td>2026-03-01 00:00:00 → 2026-04-09 23:59:59</td>
+<td>1.0 秒</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>245,851</td>
+<td>2026-03-01 12:57:59 → 2026-04-09 21:08:59</td>
+<td>1.0 秒</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-核心字段">1.3 核心字段</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>车辆标识</td>
+<td>vin, 时间轴</td>
+</tr>
+<tr>
+<td>行驶状态</td>
+<td>车速, Ready, 档位, 驾驶模式, 混动模式, 能量回收模式</td>
+</tr>
+<tr>
+<td>三电系统</td>
+<td>电池包总电压, 电池包总电流, SOC, SOH, 前电机机械功率, 后电机功率</td>
+</tr>
+<tr>
+<td>热管理</td>
+<td>最高电芯温度, 最低电芯温度, 前电机温度, 后电机温度, 环境温度, 乘员舱实际温度</td>
+</tr>
+<tr>
+<td>充电系统</td>
+<td>充电状态, 充电枪状态, 充电电流, 充电功率, 充电电压</td>
+</tr>
+<tr>
+<td>驾驶操控</td>
+<td>加速踏板开度, 制动踏板状态（开度）</td>
+</tr>
+<tr>
+<td>空调附件</td>
+<td>空调EDC实际功率, 座舱PTC实际功率, 电池PTC实际功率, 前空调开关, 后空调开关</td>
+</tr>
+<tr>
+<td>辅助信息</td>
+<td>经度, 纬度, 智能驾驶是否开启</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-读取方式">1.4 读取方式</h3>
+<p><strong>逐行流式读取</strong>，按 VIN 列过滤目标车辆，避免 553 MB CSV 一次性加载导致内存溢出：</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># data_split_tool.py — 核心读取逻辑</span>
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(csv_path, mode=<span class="hljs-string">&#x27;r&#x27;</span>, encoding=encoding, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    reader = csv.reader(f)
+    header = <span class="hljs-built_in">next</span>(reader)
+    <span class="hljs-comment"># 智能匹配 VIN 列名（支持 &quot;vin&quot; / &quot;车架号&quot;）</span>
+    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:
+        <span class="hljs-keyword">if</span> row[vin_idx].strip().lower() == target_vin:
+            matched_rows.append(row)
+</div></code></pre>
+<p>读取后按 VIN 拆分为独立 DataFrame，切片为 36 个带重叠区的 CSV 分片（每片 10,000 行，重叠 20 行），存放于 <code>SpdToPwr/processedData/vin_6993_chunk_*.csv</code>。</p>
+<p>清洗完成后固化保存为 Parquet 格式：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VIN 6993</td>
+<td><code>SpdToPwr/analysis/data/H56D_6993_processed.parquet</code></td>
+</tr>
+<tr>
+<td>VIN 7752</td>
+<td><code>SpdToPwr/analysis/data/H56D_7752_processed.parquet</code></td>
+</tr>
+<tr>
+<td>VIN 8123</td>
+<td><code>SpdToPwr/analysis/data/H56D_8123_processed.parquet</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-数据清洗">2. 数据清洗</h2>
+<h3 id="21-时间轴处理">2.1 时间轴处理</h3>
+<pre class="hljs"><code><div>df_clean[<span class="hljs-string">&#x27;时间轴&#x27;</span>] = pd.to_datetime(df_clean[<span class="hljs-string">&#x27;时间轴&#x27;</span>], errors=<span class="hljs-string">&#x27;coerce&#x27;</span>)
+df_clean = df_clean.dropna(subset=[<span class="hljs-string">&#x27;时间轴&#x27;</span>])
+df_clean = df_clean.sort_values(by=<span class="hljs-string">&#x27;时间轴&#x27;</span>).reset_index(drop=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<h3 id="22-数值字段强制类型转换与异常值裁剪">2.2 数值字段强制类型转换与异常值裁剪</h3>
+<p>车速、SOC、加速踏板开度等字段在原始 CSV 中可能混入文本，<code>pd.to_numeric(errors='coerce')</code> 将文本自动转为 NaN，越界值同样置 NaN：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>合理范围</th>
+<th>越界处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>车速</td>
+<td>0 ~ 300 km/h</td>
+<td>置 NaN，后续插值</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>0 ~ 100%</td>
+<td>置 NaN，后续插值</td>
+</tr>
+<tr>
+<td>加速踏板开度</td>
+<td>0 ~ 100%</td>
+<td>置 NaN，后续插值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-离散状态字段处理">2.3 离散状态字段处理</h3>
+<p>11 个离散状态列采用前向填充（forward fill），保持状态时序连续性：</p>
+<pre class="hljs"><code><div>CATEGORICAL_COLS = [
+    <span class="hljs-string">&quot;档位&quot;</span>, <span class="hljs-string">&quot;Ready&quot;</span>, <span class="hljs-string">&quot;驾驶模式&quot;</span>, <span class="hljs-string">&quot;混动模式&quot;</span>, <span class="hljs-string">&quot;能量回收模式&quot;</span>,
+    <span class="hljs-string">&quot;智能驾驶是否开启&quot;</span>, <span class="hljs-string">&quot;前空调开关&quot;</span>, <span class="hljs-string">&quot;后空调开关&quot;</span>, <span class="hljs-string">&quot;充电枪状态&quot;</span>, <span class="hljs-string">&quot;充电状态&quot;</span>,
+    <span class="hljs-string">&quot;制动踏板状态（开度）&quot;</span>
+]
+df_clean[cat_cols_in_df] = df_clean[cat_cols_in_df].ffill()
+</div></code></pre>
+<h3 id="24-清洗成果">2.4 清洗成果</h3>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>最大缺失率</th>
+<th>对应字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>0.005%</td>
+<td>智能驾驶是否开启</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>1.40%</td>
+<td>智能驾驶是否开启</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>0.0008%</td>
+<td>档位/充电状态等</td>
+</tr>
+</tbody>
+</table>
+<p>核心字段缺失率均 &lt; 1%，数据质量优良。</p>
+<hr>
+<h2 id="3-差值补齐">3. 差值补齐</h2>
+<h3 id="31-连续数值列线性插值">3.1 连续数值列：线性插值</h3>
+<p>对所有连续数值列执行 <strong>线性插值 + 后向填充</strong>：</p>
+<pre class="hljs"><code><div>continuous_cols = [c <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> df_clean.columns
+                   <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> cat_cols_in_df <span class="hljs-keyword">and</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;vin&#x27;</span>, <span class="hljs-string">&#x27;时间轴&#x27;</span>]]
+df_clean[continuous_cols] = df_clean[continuous_cols].apply(pd.to_numeric, errors=<span class="hljs-string">&#x27;coerce&#x27;</span>)
+df_clean[continuous_cols] = df_clean[continuous_cols].interpolate(method=<span class="hljs-string">&#x27;linear&#x27;</span>).bfill()
+</div></code></pre>
+<h3 id="32-离散状态列前向填充">3.2 离散状态列：前向填充</h3>
+<p>档位、充电状态、驾驶模式等使用 <code>ffill()</code>，因为状态在时序上具有持续性——上一秒在充电，下一秒大概率也在充电。</p>
+<h3 id="33-滑动窗口构建时的二次保障">3.3 滑动窗口构建时的二次保障</h3>
+<p>在 <code>data_utils.py</code> 的 <code>construct_sliding_windows()</code> 中，对特征和目标列再次执行 <code>ffill().bfill()</code>，双保险确保训练数据无 NaN。</p>
+<h3 id="34-分片重叠区设计">3.4 分片重叠区设计</h3>
+<p>切片时采用 <strong>重叠窗口策略</strong>（overlap = seq_len = 20）：每个分片与前一个分片有 20 行重叠，保证滑动窗口在分片边界处不丢失样本。全局拼接时剔除后一个分片的前 seq_len 行，避免重复计算。</p>
+<hr>
+<h2 id="4-统计分析">4. 统计分析</h2>
+<p>由 <code>eda_report_generator.py</code> 对三辆车分别执行 <strong>6 维度 EDA 统计分析</strong>，自动生成 Markdown 报告及配套图表。</p>
+<h3 id="41-基础描述统计vin-6993357156-行">4.1 基础描述统计（VIN 6993，357,156 行）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>车速</th>
+<th>SOC</th>
+<th>电池包总电压</th>
+<th>电池包总电流</th>
+<th>前电机机械功率</th>
+<th>最高电芯温度</th>
+<th>加速踏板开度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mean</td>
+<td>24.09</td>
+<td>62.80</td>
+<td>621.9 V</td>
+<td>-1.11 A</td>
+<td>-0.10 kW</td>
+<td>23.83 ℃</td>
+<td>7.60 %</td>
+</tr>
+<tr>
+<td>std</td>
+<td>29.84</td>
+<td>24.94</td>
+<td>37.07</td>
+<td>45.16</td>
+<td>6.00</td>
+<td>4.12</td>
+<td>11.15</td>
+</tr>
+<tr>
+<td>min</td>
+<td>0</td>
+<td>8.55</td>
+<td>534.4</td>
+<td>-1630</td>
+<td>-260</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>max</td>
+<td>149.57</td>
+<td>100</td>
+<td>691.5</td>
+<td>285.5</td>
+<td>559</td>
+<td>40</td>
+<td>88.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三车对比发现</strong>：VIN 7752 数据量最大（108 万行），平均车速最低（8.62 km/h），以城市工况为主；VIN 8123 数据量最小（24.6 万行），SOC 偏低（均值 53%）。</p>
+<h3 id="42-分布形态分析">4.2 分布形态分析</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>VIN 6993 偏度</th>
+<th>VIN 7752 偏度</th>
+<th>VIN 8123 偏度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>车速</td>
+<td>+1.06</td>
+<td>+2.95</td>
+<td>+2.03</td>
+<td>严重右偏，大量怠速/低速</td>
+</tr>
+<tr>
+<td>电池包总电流</td>
+<td>-11.76</td>
+<td>-24.33</td>
+<td>-17.18</td>
+<td>极度左偏，放电为主</td>
+</tr>
+<tr>
+<td>前电机机械功率</td>
+<td>+16.10</td>
+<td>+16.85</td>
+<td>+21.70</td>
+<td>极度右偏，大功率占比极少</td>
+</tr>
+</tbody>
+</table>
+<p>所有动力相关变量均呈高度右偏分布——车辆大部分时间处于低负荷状态，大功率输出仅占总时间的极小比例。</p>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/plots/distribution.png" alt="VIN 6993 分布图"></p>
+<h3 id="43-相关性矩阵">4.3 相关性矩阵</h3>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/plots/correlation.png" alt="VIN 6993 相关性热力图"></p>
+<p>车速-功率、加速踏板-功率呈正相关，电池包总电流绝对值与功率消耗密切相关。</p>
+<h3 id="44-时间序列特征">4.4 时间序列特征</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>VIN 6993</th>
+<th>VIN 7752</th>
+<th>VIN 8123</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时间跨度</td>
+<td>40 天</td>
+<td>40 天</td>
+<td>39 天</td>
+</tr>
+<tr>
+<td>采样间隔中位数</td>
+<td>1.0 秒</td>
+<td>1.0 秒</td>
+<td>1.0 秒</td>
+</tr>
+</tbody>
+</table>
+<p>所有车辆均为 <strong>1 Hz 等间隔采样</strong>，时间序列质量优良，适合构建时序预测模型。</p>
+<h3 id="45-工况分组对比">4.5 工况分组对比</h3>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>驾驶模式</th>
+<th>前电机机械功率均值</th>
+<th>平均车速</th>
+<th>加速踏板均值</th>
+<th>工况特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>0（经济模式）</td>
+<td>-0.1 kW</td>
+<td>24.09 km/h</td>
+<td>7.6%</td>
+<td>综合工况</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>1</td>
+<td>0.47 kW</td>
+<td>8.62 km/h</td>
+<td>2.99%</td>
+<td>城市拥堵工况</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>0（经济模式）</td>
+<td>-0.58 kW</td>
+<td>16.34 km/h</td>
+<td>6.5%</td>
+<td>混合工况</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-效率与衍生指标">4.6 效率与衍生指标</h3>
+<table>
+<thead>
+<tr>
+<th>衍生指标</th>
+<th>VIN 6993 均值</th>
+<th>VIN 7752 均值</th>
+<th>VIN 8123 均值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>瞬时能耗率 (kWh/km)</td>
+<td>0.007</td>
+<td>0.081</td>
+<td>-0.003</td>
+</tr>
+<tr>
+<td>总输入电功率 (kW)</td>
+<td>-0.82</td>
+<td>-1.10</td>
+<td>-0.62</td>
+</tr>
+</tbody>
+</table>
+<p>负功率表示电池处于净放电状态（驱动 + 附件消耗 &gt; 回收），整车能量流呈净输出态势。</p>
+<hr>
+<h2 id="5-可视化">5. 可视化</h2>
+<p>由 <code>viz_utils.py</code> 和 <code>visualize_results.py</code> 统一调度，每个 VIN 生成 <strong>5 个维度共 5 张高清图表</strong>（150 DPI，中文渲染），加上 EDA 分析图表，共计 <strong>60+ 张 PNG 图片</strong>。</p>
+<h3 id="51-可视化维度总览">5.1 可视化维度总览</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>图表</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>维度 1</td>
+<td>全局 SOC 与状态瀑布图</td>
+<td>SOC 时序 + 行驶/充电状态色带标注</td>
+</tr>
+<tr>
+<td>维度 2</td>
+<td>行程动态与三电功率</td>
+<td>车速-踏板双轴图 + 功率溯源图</td>
+</tr>
+<tr>
+<td>维度 3</td>
+<td>快充特性曲线 (CC-CV)</td>
+<td>SOC-电流/电压/功率三元曲线</td>
+</tr>
+<tr>
+<td>维度 4</td>
+<td>热惯性与温度迟滞</td>
+<td>电流发热 vs 电芯温度时序对比</td>
+</tr>
+<tr>
+<td>维度 5</td>
+<td>电机效率 MAP 图</td>
+<td>车速-功率-百公里能耗三维散点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-全局可视化跨车辆汇总">5.2 全局可视化（跨车辆汇总）</h3>
+<table>
+<thead>
+<tr>
+<th>图表</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>充电行为分析</td>
+<td><code>SpdToPwr/analysis/analysis_results/charging_analysis.png</code></td>
+</tr>
+<tr>
+<td>行程分析汇总</td>
+<td><code>SpdToPwr/analysis/analysis_results/trip_analysis.png</code></td>
+</tr>
+<tr>
+<td>功率相关性热力图</td>
+<td><code>SpdToPwr/analysis/analysis_results/power_corr_heatmap.png</code></td>
+</tr>
+<tr>
+<td>温度相关性热力图</td>
+<td><code>SpdToPwr/analysis/analysis_results/temp_corr_heatmap.png</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-vin-6993-单车可视化展示">5.3 VIN 6993 单车可视化展示</h3>
+<p><strong>维度 1：全局 SOC 与状态瀑布图</strong></p>
+<p><img src="SpdToPwr/analysis/visualizations/6993/6993_1_Global_SOC_Overview.png" alt="VIN 6993 全局 SOC"></p>
+<p>SOC 在 8.55%~100% 之间波动，行驶状态（蓝色色带）与充电状态（红色色带）清晰交替，呈周期性锯齿状。</p>
+<p><strong>维度 2：行程动态与功率</strong></p>
+<p><img src="SpdToPwr/analysis/visualizations/6993/6993_2_Trip_Dynamics_and_Power.png" alt="VIN 6993 行程动态"></p>
+<p>上图：车速（蓝线）与加速踏板开度（橙色填充）、制动踏板（红线虚线）的实时对应。下图：双电机总驱动功率（紫）、电池包总输出电功率（黑点划线）、空调功率（青）的时序变化。</p>
+<p><strong>维度 3：快充特性曲线</strong></p>
+<p><img src="SpdToPwr/analysis/visualizations/6993/6993_3_Charging_Curve.png" alt="VIN 6993 充电曲线"></p>
+<p>呈现典型 CC-CV（恒流-恒压）充电特征：低 SOC 段电流恒定、功率攀升；高 SOC 段电流下降、电压平稳、功率衰减。</p>
+<p><strong>维度 4：温度迟滞效应</strong></p>
+<p><img src="SpdToPwr/analysis/visualizations/6993/6993_4_Temperature_Hysteresis.png" alt="VIN 6993 温度迟滞"></p>
+<p>橙色区域为电流发热指标（I²），红色线为最高电芯温度。可观察到温度响应的分钟级滞后——电流增大后温度并非立即上升。</p>
+<p><strong>维度 5：电机效率 MAP 图</strong></p>
+<p><img src="SpdToPwr/analysis/visualizations/6993/6993_5_Motor_Efficiency_Map.png" alt="VIN 6993 电机效率"></p>
+<p>X=车速，Y=前电机机械功率，颜色=瞬时百公里电耗。可识别高效区（低电耗深色）和低效区（高电耗亮色）。</p>
+<h3 id="54-三车可视化对比">5.4 三车可视化对比</h3>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>图表目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7752</td>
+<td><code>SpdToPwr/analysis/visualizations/7752/</code></td>
+</tr>
+<tr>
+<td>8123</td>
+<td><code>SpdToPwr/analysis/visualizations/8123/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="选做作业">选做作业</h1>
+<h2 id="6-充电分析">6. 充电分析</h2>
+<p>由 <code>Analysis_Charge.py</code> 实现，围绕 <strong>7 个维度</strong>对每辆车进行深度充电分析，自动生成 Markdown 充电报告。</p>
+<h3 id="61-充电段识别与分段">6.1 充电段识别与分段</h3>
+<p><strong>识别逻辑</strong>：充电状态 == 5 且相邻记录时间间隔 &lt; 5 分钟（300 秒）视为同一充电事件。</p>
+<pre class="hljs"><code><div>df_charge[<span class="hljs-string">&#x27;time_diff&#x27;</span>] = df_charge[<span class="hljs-string">&#x27;时间轴&#x27;</span>].diff().dt.total_seconds().fillna(<span class="hljs-number">0</span>)
+df_charge[<span class="hljs-string">&#x27;new_event&#x27;</span>] = (df_charge[<span class="hljs-string">&#x27;time_diff&#x27;</span>] &gt; <span class="hljs-number">300</span>).astype(<span class="hljs-built_in">int</span>)
+df_charge[<span class="hljs-string">&#x27;charge_id&#x27;</span>] = df_charge[<span class="hljs-string">&#x27;new_event&#x27;</span>].cumsum() + <span class="hljs-number">1</span>
+</div></code></pre>
+<p><strong>识别结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>充电总次数</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>13 次</td>
+<td>快充为主，充电行为规律</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>35 次</td>
+<td>慢充为主（峰值仅 6.6 kW），每日夜间充电</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>3 次</td>
+<td>仅 3 次快充，样本量不足</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-充电曲线特征-cc-cv">6.2 充电曲线特征 (CC-CV)</h3>
+<p>三辆车均呈现典型恒流-恒压充电特性：</p>
+<ul>
+<li><strong>恒流段（CC）</strong>：SOC 0%~60%，电流恒定，功率随电压升高而攀升</li>
+<li><strong>恒压段（CV）</strong>：SOC 60%~100%，电压趋稳，电流逐步衰减，功率下降</li>
+</ul>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/charging_plots/typical_curve.png" alt="VIN 6993 典型充电曲线"></p>
+<h3 id="63-充电效率分析">6.3 充电效率分析</h3>
+<p>充电效率 = 电池吸收功率 / 充电机输入功率 × 100%</p>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>平均充电效率</th>
+<th>0-30% SOC</th>
+<th>30-60% SOC</th>
+<th>60-80% SOC</th>
+<th>80-100% SOC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td><strong>97.39%</strong></td>
+<td>96.68%</td>
+<td>98.36%</td>
+<td>98.51%</td>
+<td>96.12%</td>
+</tr>
+<tr>
+<td>7752</td>
+<td><strong>96.05%</strong></td>
+<td>95.75%</td>
+<td>95.40%</td>
+<td>95.69%</td>
+<td>96.54%</td>
+</tr>
+<tr>
+<td>8123</td>
+<td><strong>98.04%</strong></td>
+<td>96.89%</td>
+<td>99.75%</td>
+<td>99.33%</td>
+<td>97.09%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：效率呈&quot;中间高两端低&quot;趋势——中段 SOC（30%~80%）效率最高，低段受电池内阻影响、高段受 CV 阶段限流影响均略有下降。</p>
+<h3 id="64-充电温升分析">6.4 充电温升分析</h3>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/charging_plots/temp_rise.png" alt="VIN 6993 充电温升"></p>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>最高电芯温度</th>
+<th>最大电芯温差</th>
+<th>安全状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>39.0 ℃</td>
+<td>5.0 ℃</td>
+<td>正常（阈值 &lt; 55℃）</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>36.0 ℃</td>
+<td>7.0 ℃</td>
+<td>正常，温差略大需关注</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>41.0 ℃</td>
+<td>5.0 ℃</td>
+<td>正常</td>
+</tr>
+</tbody>
+</table>
+<h3 id="65-充电时长与充电量">6.5 充电时长与充电量</h3>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>平均充电时长</th>
+<th>平均 SOC 增量</th>
+<th>峰值功率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6993</td>
+<td>36.0 分钟</td>
+<td>55.0%</td>
+<td>156.2 kW</td>
+</tr>
+<tr>
+<td>7752</td>
+<td>255.5 分钟</td>
+<td>42.7%</td>
+<td>120.0 kW</td>
+</tr>
+<tr>
+<td>8123</td>
+<td>20.4 分钟</td>
+<td>57.8%</td>
+<td>160.0 kW</td>
+</tr>
+</tbody>
+</table>
+<p>VIN 7752 以慢充为主（平均 4 小时+），充电行为模式与 6993/8123 截然不同。</p>
+<h3 id="66-soc-区间偏好">6.6 SOC 区间偏好</h3>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/charging_plots/soc_preference.png" alt="VIN 6993 SOC 偏好"></p>
+<ul>
+<li>VIN 6993：起始 SOC 分布于 10%~65%，结束 SOC 集中在 99%~100%，偏好充满</li>
+<li>VIN 7752：起始 SOC 分布于 25%~78%，结束 SOC 集中在 99.2%，浅充浅放为主</li>
+<li>VIN 8123：3 次充电均为深度充电（SOC 增量 28%~90%）</li>
+</ul>
+<h3 id="67-充电安全性指标">6.7 充电安全性指标</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>VIN 6993</th>
+<th>VIN 7752</th>
+<th>VIN 8123</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最高电芯温度</td>
+<td>39.0 ℃</td>
+<td>36.0 ℃</td>
+<td>41.0 ℃</td>
+</tr>
+<tr>
+<td>最高电池包电压</td>
+<td>691.5 V</td>
+<td>726.8 V</td>
+<td>687.1 V</td>
+</tr>
+<tr>
+<td>最大电芯温差</td>
+<td>5.0 ℃</td>
+<td>7.0 ℃</td>
+<td>5.0 ℃</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>VIN 7752 记录到 214℃ 的最高电芯温度（EDA 阶段已标记为异常值），实际充电过程中温度未超过 36℃。</p>
+</blockquote>
+<hr>
+<h2 id="7-行程分析">7. 行程分析</h2>
+<p>由 <code>Analysis_generator.py</code> 实现，围绕 <strong>8 个维度</strong>对每辆车的行驶行程进行全方位解析。</p>
+<h3 id="71-行程分段逻辑">7.1 行程分段逻辑</h3>
+<pre class="hljs"><code><div>Ready == 1（行驶状态） + 时间间隔 &gt; 5 分钟 → 新行程
+过滤条件：时长 &lt; 2 分钟 或 里程 &lt; 0.2 km → 噪音，丢弃
+</div></code></pre>
+<pre class="hljs"><code><div>df_drive[<span class="hljs-string">&#x27;new_trip&#x27;</span>] = (df_drive[<span class="hljs-string">&#x27;time_diff&#x27;</span>] &gt; <span class="hljs-number">300</span>).astype(<span class="hljs-built_in">int</span>)
+df_drive[<span class="hljs-string">&#x27;trip_id&#x27;</span>] = df_drive[<span class="hljs-string">&#x27;new_trip&#x27;</span>].cumsum() + <span class="hljs-number">1</span>
+</div></code></pre>
+<h3 id="72-行程基础画像">7.2 行程基础画像</h3>
+<p>系统统计每段行程的时长、里程、平均/最高车速、百公里电耗、工况打标等 15 个维度指标。</p>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/trip_plots/energy_vs_speed.png" alt="VIN 6993 能耗与车速关系"></p>
+<p><strong>关键发现</strong>：能耗率与平均车速呈 V 型曲线——中速段（40~60 km/h）最省电，低速段（&lt; 30 km/h）频繁启停导致能耗偏高，高速段（&gt; 80 km/h）风阻急剧增大导致能耗率显著抬升。</p>
+<h3 id="73-驾驶工况分类">7.3 驾驶工况分类</h3>
+<table>
+<thead>
+<tr>
+<th>工况</th>
+<th>车速判据</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>城市工况</td>
+<td>平均车速 &lt; 30 km/h</td>
+<td>频繁启停、低速、回收占比高</td>
+</tr>
+<tr>
+<td>郊区工况</td>
+<td>30 ≤ 平均车速 ≤ 60 km/h</td>
+<td>匀速占比大、能耗最低</td>
+</tr>
+<tr>
+<td>高速工况</td>
+<td>平均车速 &gt; 60 km/h</td>
+<td>高风阻、能耗率最高</td>
+</tr>
+</tbody>
+</table>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/trip_plots/conditions_analysis.png" alt="VIN 6993 工况对比"></p>
+<h3 id="74-加速与制动行为">7.4 加速与制动行为</h3>
+<ul>
+<li><strong>急加速阈值</strong>：&gt; 1.5 m/s²，<strong>急减速阈值</strong>：&lt; -1.5 m/s²</li>
+<li>统计每次行程的急加/减速次数、平均踏板深度</li>
+</ul>
+<h3 id="75-能量回收分析">7.5 能量回收分析</h3>
+<pre class="hljs"><code><div>regen_energy_kwh = (group.loc[group[<span class="hljs-string">&#x27;电机总机械功率(kW)&#x27;</span>] &lt; <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;电机总机械功率(kW)&#x27;</span>].<span class="hljs-built_in">abs</span>()
+                    * (group.loc[... <span class="hljs-string">&#x27;dt&#x27;</span>] / <span class="hljs-number">3600</span>)).<span class="hljs-built_in">sum</span>()
+</div></code></pre>
+<p>回收占比直接反映制动能量回收系统的利用率，是预测模型捕捉能耗波动的关键特征。</p>
+<h3 id="76-温度演化">7.6 温度演化</h3>
+<p>追踪每段行程中电池温升和电机最高温度：电池温升与行程时长、大功率持续时间正相关；电机最高温度与驾驶激烈程度正相关。</p>
+<h3 id="77-空调与附件能耗占比">7.7 空调与附件能耗占比</h3>
+<p><img src="SpdToPwr/analysis/EDA_Reports/6993/trip_plots/hvac_vs_env.png" alt="VIN 6993 附件能耗"></p>
+<p><strong>核心结论</strong>：环境温度过高或过低时，热管理附件（PTC + 空调）能耗占比急剧上升。这是为什么模型必须将环境温度和空调功率作为强时序特征——否则无法捕获极端气候下的耗电跳变。</p>
+<hr>
+<h2 id="8-能耗预测三种网络对比">8. 能耗预测（三种网络对比）</h2>
+<p>本项目构建了 <strong>LSTM / BiLSTM / BiLSTM+Attention 三种深度学习模型</strong>进行能耗预测对比实验，评估不同架构在电动汽车驱动功率预测任务上的表现。</p>
+<h3 id="81-预测目标与输入">8.1 预测目标与输入</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入特征 X（9 维）</strong></td>
+<td>加速踏板开度、制动踏板状态、车速、驾驶模式、能量回收模式、空调EDC实际功率、座舱PTC实际功率、环境温度、乘员舱实际温度</td>
+</tr>
+<tr>
+<td><strong>预测目标 Y（1 维）</strong></td>
+<td>总驱动功率 = 前电机机械功率 + 后电机机械功率（kW）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-滑动窗口构造">8.2 滑动窗口构造</h3>
+<pre class="hljs"><code><div>seq_len = 20（用过去 20 秒预测下一秒）
+
+样本 1: X = [t₁ .. t₂₀]  →  y = 总功率[t₂₁]
+样本 2: X = [t₂ .. t₂₁]  →  y = 总功率[t₂₂]
+</div></code></pre>
+<h3 id="83-三种模型架构对比">8.3 三种模型架构对比</h3>
+<h4 id="模型-alstm纯-lstm无-attention">模型 A：LSTM（纯 LSTM，无 Attention）</h4>
+<pre class="hljs"><code><div>输入 (batch, 20, 9)
+  → LSTM Layer 1 (hidden=128, batch_first=True)
+  → LayerNorm(128)
+  → LSTM Layer 2 (hidden=128, batch_first=True)
+  → 取最后时间步 [:, -1, :] → (batch, 128)
+  → Dropout(0.3)
+  → FC: 128 → 64 → ReLU → 1
+</div></code></pre>
+<p>定义位于 <code>SpdToPwr/nn/model_lstm.py</code>，训练入口 <code>SpdToPwr/train/train_lstm.py</code>。</p>
+<h4 id="模型-bbilstm纯-bilstm无-attention">模型 B：BiLSTM（纯 BiLSTM，无 Attention）</h4>
+<pre class="hljs"><code><div>输入 (batch, 20, 9)
+  → BiLSTM Layer 1 (hidden=128, batch_first=True, bidirectional=True)
+  → BatchNorm1d(256)
+  → BiLSTM Layer 2 (hidden=128, batch_first=True, bidirectional=True)
+  → 取最后时间步 [:, -1, :] → (batch, 256)
+  → Dropout(0.3)
+  → FC: 256 → 128 → 64 → ReLU → 1
+</div></code></pre>
+<p>定义位于 <code>SpdToPwr/nn/model_bilstm.py</code>，训练入口 <code>SpdToPwr/train/train_bilstm.py</code>。</p>
+<h4 id="模型-cbilstm--bahdanau-attention">模型 C：BiLSTM + Bahdanau Attention</h4>
+<pre class="hljs"><code><div>输入 (batch, 20, 9)
+  → 线性投影 + ReLU (9 → 128)
+  → BiLSTM Layer 1 (hidden=128, bidirectional=True)
+  → BatchNorm1d(256)
+  → BiLSTM Layer 2 (hidden=128, bidirectional=True)
+  → Bahdanau Attention
+      打分: score = vᵀ · tanh(W · h + b)
+      权重: softmax(score)
+      上下文: Σ attention_weights · lstm_out
+  → Dropout(0.3)
+  → FC: 256 → 128 → 64 → 1
+</div></code></pre>
+<p>定义位于 <code>SpdToPwr/nn/model_improved.py</code>，训练入口 <code>SpdToPwr/train/train_bilstm_a.py</code>。</p>
+<h3 id="84-架构差异总结">8.4 架构差异总结</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>LSTM</th>
+<th>BiLSTM</th>
+<th>BiLSTM+Attention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入投影层</td>
+<td>无</td>
+<td>无</td>
+<td>有 (Linear+ReLU 9→128)</td>
+</tr>
+<tr>
+<td>方向性</td>
+<td>单向（仅前向）</td>
+<td>双向（前向+后向）</td>
+<td>双向（前向+后向）</td>
+</tr>
+<tr>
+<td>注意力机制</td>
+<td>无</td>
+<td>无</td>
+<td>Bahdanau Attention</td>
+</tr>
+<tr>
+<td>时间步提取</td>
+<td>最后一步隐藏状态</td>
+<td>最后一步双向拼接</td>
+<td>Attention 加权求和</td>
+</tr>
+<tr>
+<td>FC 层结构</td>
+<td>128→64→1</td>
+<td>256→128→64→1</td>
+<td>256→128→64→1</td>
+</tr>
+<tr>
+<td>参数量</td>
+<td>最少</td>
+<td>中等</td>
+<td>最多</td>
+</tr>
+</tbody>
+</table>
+<h3 id="85-训练配置三模型统一">8.5 训练配置（三模型统一）</h3>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序列长度 seq_len</td>
+<td>20</td>
+</tr>
+<tr>
+<td>隐藏维度 hidden_dim</td>
+<td>128</td>
+</tr>
+<tr>
+<td>批次大小 batch_size</td>
+<td>64</td>
+</tr>
+<tr>
+<td>最大训练轮数 max_epochs</td>
+<td>150</td>
+</tr>
+<tr>
+<td>损失函数</td>
+<td>MSE</td>
+</tr>
+<tr>
+<td>优化器</td>
+<td>AdamW（lr=1e-3, weight_decay=1e-4）</td>
+</tr>
+<tr>
+<td>梯度裁剪</td>
+<td>max_norm=1.0</td>
+</tr>
+<tr>
+<td>学习率调度</td>
+<td>ReduceLROnPlateau（patience=8, factor=0.5, min_lr=1e-6, cooldown=3）</td>
+</tr>
+<tr>
+<td>早停策略</td>
+<td>patience=20, min_delta=1e-4</td>
+</tr>
+<tr>
+<td>数据集划分</td>
+<td>按时序按行程 70%/15%/15%（不随机打乱）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="86-三模型预测对比图">8.6 三模型预测对比图</h3>
+<p><strong>模型 A：LSTM 预测结果</strong></p>
+<p><img src="SpdToPwr/test_results_lstm/predict_FULL_power_prediction_6993.png" alt="LSTM 全量时序全景图"></p>
+<p><img src="SpdToPwr/test_results_lstm/predict_ZOOM_power_prediction_6993.png" alt="LSTM 局部动态跟随放大图"></p>
+<p><strong>模型 B：BiLSTM 预测结果</strong></p>
+<p><img src="SpdToPwr/test_results_bilstm/predict_FULL_power_prediction_6993.png" alt="BiLSTM 全量时序全景图"></p>
+<p><img src="SpdToPwr/test_results_bilstm/predict_ZOOM_power_prediction_6993.png" alt="BiLSTM 局部动态跟随放大图"></p>
+<p><strong>模型 C：BiLSTM+Attention 预测结果</strong></p>
+<p><img src="SpdToPwr/test_results/predict_FULL_power_prediction_6993.png" alt="BiLSTM+Attention 全量时序全景图"></p>
+<p><img src="SpdToPwr/test_results/predict_ZOOM_power_prediction_6993.png" alt="BiLSTM+Attention 局部动态跟随放大图"></p>
+<h3 id="87-三模型性能对比分析">8.7 三模型性能对比分析</h3>
+<table>
+<thead>
+<tr>
+<th>评估指标</th>
+<th>LSTM</th>
+<th>BiLSTM</th>
+<th>BiLSTM+Attention</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RMSE (kW)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>均方根误差，越小越好</td>
+</tr>
+<tr>
+<td>MAE (kW)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>平均绝对误差</td>
+</tr>
+<tr>
+<td>R²</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>决定系数，越接近 1 越好</td>
+</tr>
+<tr>
+<td>参数量</td>
+<td>最少</td>
+<td>中等</td>
+<td>最多</td>
+<td>训练速度 LSTM &gt; BiLSTM &gt; BiLSTM+Att</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：具体数值需运行 <code>test/test_lstm.py</code>、<code>test/test_bilstm.py</code>、<code>test/test.py</code> 获取。三个模型权重已训练完成，存放于 <code>SpdToPwr/models/</code> 目录。</p>
+</blockquote>
+<h3 id="88-模型权重与测试脚本">8.8 模型权重与测试脚本</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>权重文件</th>
+<th>训练脚本</th>
+<th>测试脚本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSTM</td>
+<td><code>models/best_model_lstm_power_prediction_6993.pth</code></td>
+<td><code>train/train_lstm.py</code></td>
+<td><code>test/test_lstm.py</code></td>
+</tr>
+<tr>
+<td>BiLSTM</td>
+<td><code>models/best_model_bilstm_power_prediction_6993.pth</code></td>
+<td><code>train/train_bilstm.py</code></td>
+<td><code>test/test_bilstm.py</code></td>
+</tr>
+<tr>
+<td>BiLSTM+Attention</td>
+<td><code>models/best_model_power_prediction_6993.pth</code></td>
+<td><code>train/train_bilstm_a.py</code></td>
+<td><code>test/test.py</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>运行方式</strong>：</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> SpdToPwr/test
+
+<span class="hljs-comment"># 测试 LSTM</span>
+python test_lstm.py
+
+<span class="hljs-comment"># 测试 BiLSTM</span>
+python test_bilstm.py
+
+<span class="hljs-comment"># 测试 BiLSTM+Attention</span>
+python test.py
+</div></code></pre>
+<h3 id="89-训练结果可视化">8.9 训练结果可视化</h3>
+<p><code>visualize_results.py</code> 提供完整的训练结果可视化，支持单模型 5 图和跨模型对比：</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># 单模型 5 图（Loss曲线 + 散点图 + 时序对比 + 残差分析 + 特征重要性）</span>
+python visualize_results.py training lstm 6993 power_prediction
+python visualize_results.py training bilstm 6993 power_prediction
+python visualize_results.py training bilstm_attention 6993 power_prediction
+
+<span class="hljs-comment"># 三模型对比（Loss 对比 + RMSE/MAE/R² 柱状图）</span>
+python visualize_results.py training compare 6993 power_prediction
+</div></code></pre>
+<p>输出目录结构：</p>
+<pre class="hljs"><code><div>
+</div></code></pre>
+<hr>
+<h2 id="项目文件结构">项目文件结构</h2>
+<hr>
+<h2 id="技术栈">技术栈</h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据处理</td>
+<td>Pandas, NumPy, Scikit-learn (StandardScaler)</td>
+</tr>
+<tr>
+<td>可视化</td>
+<td>Matplotlib, Seaborn（中文渲染，150 DPI）</td>
+</tr>
+<tr>
+<td>深度学习</td>
+<td>PyTorch（LSTM, BiLSTM, Bahdanau Attention, BatchNorm, LayerNorm, Dropout）</td>
+</tr>
+<tr>
+<td>优化策略</td>
+<td>AdamW, ReduceLROnPlateau, EarlyStopping, Gradient Clipping</td>
+</tr>
+<tr>
+<td>评估指标</td>
+<td>RMSE, MAE, R², MAPE, nMAE（满量程百分比误差）</td>
+</tr>
+<tr>
+<td>存储格式</td>
+<td>Parquet, CSV, NPZ, Pickle, JSON, PTH</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+</body>
+</html>
